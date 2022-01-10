@@ -6,15 +6,14 @@ export const NewsCard = (props) => {
   let { url, urlToImage, name, title, description, source, publishedAt } = news;
 
   return (
-    <a className="news-card" href={url} target="default">
+    <a href={url} target="default">
       <img
-        className="news-image"
         src={
           urlToImage === undefined ? "../assets/sr01-700x217.jpeg" : urlToImage
         }
         alt={name}
       />
-      <div className="news-card-content">
+      <div>
         <h4>{title}</h4>
         <p>{description}</p>
         <div>

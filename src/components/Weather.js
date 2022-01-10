@@ -55,12 +55,12 @@ export const Weather = () => {
         {fetchedWeatherData.name}, {fetchedWeatherData.sys.country}
       </p>
       <p>Temp : {(fetchedWeatherData.main.temp - 273).toFixed(1)} ℃</p>
-      <div className="weather-temp">
+      <div>
         <p>Feels Like : {feelsLike} ℃</p>
         <p>Max Temp: {maxTemperature} ℃</p>
         <p>Min Temp: {minTemperature} ℃</p>
       </div>
-      <div className="weather-suns">
+      <div>
         <p>Sunrise : {sunriseHour}:{sunriseMinutes.substr(-2)}</p>
         <p>Sunset : {sunsetHour}:{sunsetMinutes.substr(-2)}</p>
       </div>

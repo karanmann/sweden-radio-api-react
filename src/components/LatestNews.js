@@ -34,9 +34,13 @@ export const LatestNews = () => {
       <p>LatestNews</p>
       {fetchedNews.map((news, index) => {
         return (
-          <NewsCard news={news}/>
+          <div>
+            <NewsCard news={news} />
+          </div>
         );
       })}
     </>
   );
 };
+
+

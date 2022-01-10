@@ -30,10 +30,10 @@ export const RadioChannels = () => {
       {fetchedRadioData.channels.map((channel, index) => {
 
         return (
-          <div key={index} className="radio-card">
-            <img className="card-image" src={channel.image} alt="channel"></img>
-            <div className="card-content">
-              <p className="card-discription">{channel.tagline}</p>
+          <div key={index}>
+            <img src={channel.image} alt="channel"></img>
+            <div>
+              <p>{channel.tagline}</p>
               <Player liveaudio={channel.liveaudio.url}/>
             </div>
           </div>

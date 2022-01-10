@@ -35,13 +35,12 @@ export const Programs = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <div className="program-card">
+            <div>
               <img
-                className="program-card-image"
                 src={program.programimage}
                 alt={program.name}
               />
-              <div className="program-card-details">
+              <div>
                 <h5>{program.name}</h5>
                 <p>{program.description}</p>
                 <p>
