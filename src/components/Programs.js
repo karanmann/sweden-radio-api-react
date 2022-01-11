@@ -19,26 +19,37 @@ export const Programs = () => {
       });
   }, []);
 
-  if (!fetchComplete) return <p>Loading...</p>;
+  if (!fetchComplete)
+    return (
+      <div className="loader-position">
+        <span className="loader"></span>
+      </div>
+    );
 
   return (
-    <>
-      <Link to="/">BACK</Link>
+    <div className="program-page">
+      <Link to="/">
+        <div className="btn btn7">
+          <h4>BACK</h4>
+        </div>
+      </Link>
       <h3>Programs</h3>
-      {fetchedData.programs.map((program, index) => {
-        return (
-          <a
-            key={index}
-            href={program.programurl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div>
+      <div className="program-card-container">
+        {fetchedData.programs.map((program, index) => {
+          return (
+            <a
+              className="program-card"
+              key={index}
+              href={program.programurl}
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
+                className="program-card-image"
                 src={program.programimage}
                 alt={program.name}
               />
-              <div>
+              <div className="program-details">
                 <h5>{program.name}</h5>
                 <p>{program.description}</p>
                 <p>
@@ -47,10 +58,15 @@ export const Programs = () => {
                     : program.broadcastinfo}
                 </p>
               </div>
-            </div>
-          </a>
-        );
-      })}
-    </>
+            </a>
+          );
+        })}
+      </div>
+      <Link to="/">
+        <div className="btn btn7">
+          <h4>BACK</h4>
+        </div>
+      </Link>
+    </div>
   );
 };

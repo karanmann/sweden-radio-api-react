@@ -1,13 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const weatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=stockholm&appid=a77136eb90fd8d858de1f60c1ae1ee51`;
 
 export const Weather = () => {
+  // const [lon, setLon] = useState(0);
+  // const [lat, setLat] = useState(0)
   const [fetchComplete, setFetchComplete] = useState(false);
   const [fetchedWeatherData, setFetchedWeatherData] = useState("");
 
   useEffect(() => {
+    // const API_KEY = 'a77136eb90fd8d858de1f60c1ae1ee51'
+    // const weatherAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`   
+    
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   setLat(position.coords.latitude);
+    //   setLon(position.coords.longitude);
+    // });
+    const weatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=stockholm&appid=a77136eb90fd8d858de1f60c1ae1ee51`;
+
     fetch(weatherAPI)
       .then((res) => res.json())
       .then((programData) => {
@@ -19,7 +29,12 @@ export const Weather = () => {
       });
   }, []);
 
-  if (!fetchComplete) return <p>Loading...</p>;
+  if (!fetchComplete)
+    return (
+      <div className="loader-position">
+        <span className="loader"></span>
+      </div>
+    );
 
   const sunriseHour = new Date(
     fetchedWeatherData.sys.sunrise * 1000
@@ -29,7 +44,6 @@ export const Weather = () => {
   const sunsetHour = new Date(fetchedWeatherData.sys.sunset * 1000).getHours();
   const sunsetMinutes =
     "0" + new Date(fetchedWeatherData.sys.sunset * 1000).getMinutes();
-
 
   const date = new Date(fetchedWeatherData.dt * 1000);
   const weekday = date.toLocaleDateString("en-GB", {
@@ -44,23 +58,33 @@ export const Weather = () => {
   const minTemperature = Math.round(fetchedWeatherData.main.temp_min - 273);
 
   return (
-    <>
-      <Link to="/">BACK</Link>
+    <div className="weather-page">
+      <Link to="/">
+        <div className="btn btn7">
+          <h4>BACK</h4>
+        </div>
+      </Link>
+      <div className="weather-container">
       <h3>Weather</h3>
-      <p>{weekday}</p>
-      <p>
-        {fetchedWeatherData.name}, {fetchedWeatherData.sys.country}
-      </p>
-      <p>Temp : {(fetchedWeatherData.main.temp - 273).toFixed(1)} ℃</p>
-      <div>
-        <p>Feels Like : {feelsLike} ℃</p>
-        <p>Max Temp: {maxTemperature} ℃</p>
-        <p>Min Temp: {minTemperature} ℃</p>
+        <p>{weekday}</p>
+        <p>
+          {fetchedWeatherData.name}, {fetchedWeatherData.sys.country}
+        </p>
+        <p>Temp : {(fetchedWeatherData.main.temp - 273).toFixed(1)} ℃</p>
+        <div>
+          <p>Feels Like : {feelsLike} ℃</p>
+          <p>Max Temp: {maxTemperature} ℃</p>
+          <p>Min Temp: {minTemperature} ℃</p>
+        </div>
+        <div>
+          <p>
+            Sunrise : {sunriseHour}:{sunriseMinutes.substr(-2)}
+          </p>
+          <p>
+            Sunset : {sunsetHour}:{sunsetMinutes.substr(-2)}
+          </p>
+        </div>
       </div>
-      <div>
-        <p>Sunrise : {sunriseHour}:{sunriseMinutes.substr(-2)}</p>
-        <p>Sunset : {sunsetHour}:{sunsetMinutes.substr(-2)}</p>
-      </div>
-    </>
+    </div>
   );
 };

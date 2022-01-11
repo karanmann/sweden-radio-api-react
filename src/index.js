@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import './styles/styles.css'
+
 import { App } from "./App";
 import { LatestNews } from "./components/LatestNews";
 import { Programs } from "./components/Programs";

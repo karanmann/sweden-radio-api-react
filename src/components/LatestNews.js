@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import { NewsCard } from "./latestNews/NewsCard";
-import { NewsCardsContainer} from "../styles/latestNews";
 
 const key = "88804fd27daf4133b20f9cd7037177bf";
 const newsURL = `https://newsapi.org/v2/top-headlines?country=se&apiKey=${key}`;
@@ -22,23 +21,21 @@ export const LatestNews = () => {
       });
   }, []);
 
-  if (!fetchComplete) return <p>Loading...</p>;
+  if (!fetchComplete) return <div className="loader-position"><span className="loader"></span></div>;
   console.log(fetchedNews);
 
   // fetchedNews.slice(4,16).map((news) => {
 
   return (
-    <div>
+    <div className="latest-news-page">
       <h3>LatestNews</h3>
-      {fetchedNews.map((news, index) => {
-        return (
-          <NewsCardsContainer>
-            <NewsCard news={news} />
-          </NewsCardsContainer>
-        );
-      })}
+      <div className="news-card-container">
+        {fetchedNews.map((news, index) => {
+          return (
+            <NewsCard key={index} news={news} />
+          );
+        })}
+      </div>
     </div>
   );
 };
-
-

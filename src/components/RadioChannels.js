@@ -20,23 +20,37 @@ export const RadioChannels = () => {
       });
   }, []);
 
-  if (!fetchComplete) return <p>Loading...</p>;
+  if (!fetchComplete) return <div className="loader-position"><span className="loader"></span></div>;
   return (
-    <>
-      <Link to="/">BACK</Link>
+    <div className="radio-channel-page">
+      <Link to="/">
+        <div className="btn btn7">
+          <h4>BACK</h4>
+        </div>
+      </Link>
       <h3>Radio Channels</h3>
-      {fetchedRadioData.channels.map((channel, index) => {
-
-        return (
-          <div key={index}>
-            <img src={channel.image} alt="channel"></img>
-            <div>
-              <p>{channel.tagline}</p>
-              <Player liveaudio={channel.liveaudio.url}/>
+      <div className="radio-card-container">
+        {fetchedRadioData.channels.map((channel, index) => {
+          return (
+            <div className="radio-card" key={index}>
+              <img
+                className="radio-card-image"
+                src={channel.image}
+                alt="channel"
+              ></img>
+              <div className="radio-details">
+                <p>{channel.tagline}</p>
+                <Player liveaudio={channel.liveaudio.url} />
+              </div>
             </div>
-          </div>
-        );
-      })}
-    </>
+          );
+        })}
+      </div>
+      <Link to="/">
+        <div className="btn btn7">
+          <h4>BACK</h4>
+        </div>
+      </Link>
+    </div>
   );
 };

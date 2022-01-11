@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
 
-import { NavContainer, NavImage, NavLink } from '../styles/nav'
-
 import navLogo from "../assets/Sveriges Radio logo 2011.png";
 
 export const Nav = () => {
   return (
-    <NavContainer>
-      <NavImage src={navLogo} alt="navlogo" />
-      <NavLink>
-        <Link to="/latestnews">Latest News</Link>
-        <Link to="/Programs">Programs</Link>
-        <Link to="/radiochannels">Radio Channels</Link>
-        <Link to="/weather">Weather</Link>
-      </NavLink>
-    </NavContainer>
+    <div className="nav-container">
+      <img className="nav-image" src={navLogo} alt="navlogo" />
+      <div className="nav-link-container">
+        <Link className="nav-link" to="/Programs">Programs</Link>
+        <Link className="nav-link" to="/radiochannels">Radio Channels</Link>
+        <Link className="nav-link" to="/weather">Weather</Link>
+      </div>
+    </div>
   );
 };
