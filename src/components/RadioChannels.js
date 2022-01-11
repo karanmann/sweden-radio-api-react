@@ -23,10 +23,8 @@ export const RadioChannels = () => {
   if (!fetchComplete) return <p>Loading...</p>;
   return (
     <>
-      <Link to="/">
-        <button>BACK HOME</button>
-      </Link>
-      <p>Radio Channels</p>
+      <Link to="/">BACK</Link>
+      <h3>Radio Channels</h3>
       {fetchedRadioData.channels.map((channel, index) => {
 
         return (

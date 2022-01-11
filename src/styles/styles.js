@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components/macro";
+import { createGlobalStyle } from "styled-components/macro";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -8,17 +8,28 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #d5e1ef;
     font-family: "Source Sans Pro", sans-serif;
+    background-color: #d5e1ef;
   }
+
+  /* a {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:active {
+  text-decoration: underline;
+} */
 `;
 
-export const StyledButton = styled.button`
-  border: #f3f3f3;
-  background-color: #fff;
-  color: #345234;
 
-  &:hover {
-    font-weight: 600;
-  }
-`;

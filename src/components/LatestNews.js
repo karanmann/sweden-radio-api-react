@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { NewsCard } from "./latestNews/NewsCard";
+import { NewsCardsContainer} from "../styles/latestNews";
 
 const key = "88804fd27daf4133b20f9cd7037177bf";
 const newsURL = `https://newsapi.org/v2/top-headlines?country=se&apiKey=${key}`;
@@ -27,19 +28,16 @@ export const LatestNews = () => {
   // fetchedNews.slice(4,16).map((news) => {
 
   return (
-    <>
-      {/* <Link to="/">
-        <StyledButton>BACK HOME</StyledButton>
-      </Link> */}
-      <p>LatestNews</p>
+    <div>
+      <h3>LatestNews</h3>
       {fetchedNews.map((news, index) => {
         return (
-          <div>
+          <NewsCardsContainer>
             <NewsCard news={news} />
-          </div>
+          </NewsCardsContainer>
         );
       })}
-    </>
+    </div>
   );
 };
 

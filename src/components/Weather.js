@@ -45,11 +45,8 @@ export const Weather = () => {
 
   return (
     <>
-      <Link to="/">
-        <button>BACK HOME</button>
-      </Link>
-
-      <p>Weather</p>
+      <Link to="/">BACK</Link>
+      <h3>Weather</h3>
       <p>{weekday}</p>
       <p>
         {fetchedWeatherData.name}, {fetchedWeatherData.sys.country}

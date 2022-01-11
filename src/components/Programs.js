@@ -23,10 +23,8 @@ export const Programs = () => {
 
   return (
     <>
-      <Link to="/">
-        <button>BACK HOME</button>
-      </Link>
-      <p>Programs</p>
+      <Link to="/">BACK</Link>
+      <h3>Programs</h3>
       {fetchedData.programs.map((program, index) => {
         return (
           <a
