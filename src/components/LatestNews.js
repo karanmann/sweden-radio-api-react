@@ -10,19 +10,34 @@ export const LatestNews = () => {
   const [fetchedNews, setFetchedNews] = useState("");
 
   useEffect(() => {
-    fetch(newsURL)
-      .then((res) => res.json())
-      .then((newsData) => {
-        setFetchedNews(newsData.articles);
-        setFetchComplete(true);
-      })
-      .catch((error) => {
-        console.log(error, "There has been an error");
-      });
+    const fetchData = async () => {
+      // fetch(newsURL)
+      //   .then((res) => res.json())
+      //   .then((newsData) => {
+      //     setFetchedNews(newsData.articles);
+      //     setFetchComplete(true);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error, "There has been an error");
+      //   });
+      const data = await fetch(newsURL);
+      const json = await data.json();
+
+      setFetchedNews(json.articles);
+      setFetchComplete(true);
+    };
+
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
   }, []);
 
-  if (!fetchComplete) return <div className="loader-position"><span className="loader"></span></div>;
-  console.log(fetchedNews);
+  if (!fetchComplete)
+    return (
+      <div className="loader-position">
+        <span className="loader"></span>
+      </div>
+    );
 
   // fetchedNews.slice(4,16).map((news) => {
 
@@ -31,9 +46,7 @@ export const LatestNews = () => {
       <h3>LatestNews</h3>
       <div className="news-card-container">
         {fetchedNews.map((news, index) => {
-          return (
-            <NewsCard key={index} news={news} />
-          );
+          return <NewsCard key={index} news={news} />;
         })}
       </div>
     </div>
