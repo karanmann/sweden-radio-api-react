@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
+import { CustomButton } from "./universal/CustomButton";
+import { WeatherCard } from "./weather/WeatherCard";
 
 export const Weather = () => {
   // const [lon, setLon] = useState(0);
@@ -10,8 +11,8 @@ export const Weather = () => {
 
   useEffect(() => {
     // const API_KEY = 'a77136eb90fd8d858de1f60c1ae1ee51'
-    // const weatherAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`   
-    
+    // const weatherAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+
     // navigator.geolocation.getCurrentPosition((position) => {
     //   setLat(position.coords.latitude);
     //   setLon(position.coords.longitude);
@@ -59,32 +60,8 @@ export const Weather = () => {
 
   return (
     <div className="weather-page">
-      <Link to="/">
-        <div className="btn btn7">
-          <h4>BACK</h4>
-        </div>
-      </Link>
-      <div className="weather-container">
-      <h3>Weather</h3>
-        <p>{weekday}</p>
-        <p>
-          {fetchedWeatherData.name}, {fetchedWeatherData.sys.country}
-        </p>
-        <p>Temp : {(fetchedWeatherData.main.temp - 273).toFixed(1)} ℃</p>
-        <div>
-          <p>Feels Like : {feelsLike} ℃</p>
-          <p>Max Temp: {maxTemperature} ℃</p>
-          <p>Min Temp: {minTemperature} ℃</p>
-        </div>
-        <div>
-          <p>
-            Sunrise : {sunriseHour}:{sunriseMinutes.substr(-2)}
-          </p>
-          <p>
-            Sunset : {sunsetHour}:{sunsetMinutes.substr(-2)}
-          </p>
-        </div>
-      </div>
+      <CustomButton />
+      <WeatherCard weekday={weekday} fetchedWeatherData={fetchedWeatherData} feelsLike={feelsLike} maxTemperature={maxTemperature} minTemperature={minTemperature} sunriseHour={sunriseHour} sunriseMinutes={sunriseMinutes} sunsetHour={sunsetHour} sunsetMinutes={sunsetMinutes} />
     </div>
   );
 };

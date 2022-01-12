@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { CustomButton } from "./universal/CustomButton";
+import { ProgramCard } from "./programs/ProgramCard";
 
 const URL = "https://api.sr.se/api/v2/programs/index?format=json";
 
@@ -28,45 +29,14 @@ export const Programs = () => {
 
   return (
     <div className="program-page">
-      <Link to="/">
-        <div className="btn btn7">
-          <h4>BACK</h4>
-        </div>
-      </Link>
+      <CustomButton />
       <h3>Programs</h3>
       <div className="program-card-container">
         {fetchedData.programs.map((program, index) => {
-          return (
-            <a
-              className="program-card"
-              key={index}
-              href={program.programurl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                className="program-card-image"
-                src={program.programimage}
-                alt={program.name}
-              />
-              <div className="program-details">
-                <h5>{program.name}</h5>
-                <p>{program.description}</p>
-                <p>
-                  {program.broadcastinfo === undefined
-                    ? "-"
-                    : program.broadcastinfo}
-                </p>
-              </div>
-            </a>
-          );
+          return <ProgramCard index={index} program={program} />;
         })}
       </div>
-      <Link to="/">
-        <div className="btn btn7">
-          <h4>BACK</h4>
-        </div>
-      </Link>
+      <CustomButton />
     </div>
   );
 };
