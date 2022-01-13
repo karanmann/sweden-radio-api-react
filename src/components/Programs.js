@@ -33,7 +33,7 @@ export const Programs = () => {
       <h3>Programs</h3>
       <div className="program-card-container">
         {fetchedData.programs.map((program, index) => {
-          return <ProgramCard keys={index} program={program} />;
+          return <ProgramCard key={index} program={program} />;
         })}
       </div>
       <CustomButton />

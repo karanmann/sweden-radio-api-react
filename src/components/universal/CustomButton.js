@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import clickSound from '../../assets/click.wav'
 
 let audio = new Audio(clickSound)
-
+audio.volume = 0.3;
 const playSound = () => {
   audio.play()
 }

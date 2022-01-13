@@ -1,8 +1,8 @@
 import { Player } from '../universal/Player'
 
-export const RadioChannelCard = ({index, channel}) => {
+export const RadioChannelCard = ({channel}) => {
   return (
-    <div className="radio-card" key={index}>
+    <div className="radio-card">
       <img className="radio-card-image" src={channel.image} alt="channel"></img>
       <div className="radio-details">
         <p>{channel.tagline}</p>

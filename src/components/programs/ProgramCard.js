@@ -1,8 +1,7 @@
-export const ProgramCard = ({index, program}) => {
+export const ProgramCard = ({program}) => {
   return (
     <a
       className="program-card"
-      key={index}
       href={program.programurl}
       target="_blank"
       rel="noreferrer"
