@@ -22,7 +22,7 @@ export const LatestNews = () => {
       //   });
       const data = await fetch(newsURL);
       const json = await data.json();
-      console.log(json)
+      // console.log(json)
       setFetchedNews(json.articles);
       setFetchComplete(true);
     };

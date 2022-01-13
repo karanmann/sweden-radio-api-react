@@ -29,7 +29,7 @@ export const RadioChannels = () => {
       <div className="radio-card-container">
         {fetchedRadioData.channels.map((channel, index) => {
           return (
-            <RadioChannelCard channel={channel} index={index}/>
+            <RadioChannelCard channel={channel} key={index}/>
           );
         })}
       </div>
